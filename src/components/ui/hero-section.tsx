@@ -13,7 +13,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15 py-0">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient pt-20">
             WELCOME TO
           </h1>
           
