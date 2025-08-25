@@ -54,6 +54,20 @@ const HeroSection = () => {
           </div>
         </div>
 
+        {/* Choose Your Region Section */}
+        <div className="mb-12">
+          <h3 className="text-3xl md:text-4xl font-bold text-accent mb-8 text-center">
+            Choose Your Region
+          </h3>
+          <div className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
+            <img 
+              src="/lovable-uploads/4760b040-2b6d-45f7-aabd-8e65569ec6f9.png" 
+              alt="US Regional Map for Elite Pro Teams" 
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+        </div>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="default" size="lg" className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform">
             Find Your Team
