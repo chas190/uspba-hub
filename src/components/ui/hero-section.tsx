@@ -1,14 +1,11 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
-
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style={{
+      backgroundImage: `url(${heroImage})`
+    }} />
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
@@ -16,7 +13,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient my-0">
             WELCOME TO
           </h1>
           <h2 className="text-8xl md:text-9xl font-black mb-8 text-primary glow-effect">
@@ -54,24 +51,14 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            variant="default" 
-            size="lg" 
-            className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform"
-          >
+          <Button variant="default" size="lg" className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform">
             Find Your Team
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="text-lg px-8 py-6 bg-background/20 backdrop-blur-sm hover:bg-primary/20 hover:scale-105 transition-transform"
-          >
+          <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-background/20 backdrop-blur-sm hover:bg-primary/20 hover:scale-105 transition-transform">
             Listen to Podcast
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
