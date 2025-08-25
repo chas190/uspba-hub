@@ -49,7 +49,7 @@ const HeroSection = () => {
             <p className="text-muted-foreground">National Regions</p>
           </div>
           <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
-            <h4 className="text-4xl font-black text-primary mb-2">3,480</h4>
+            <h4 className="text-4xl font-black text-primary mb-2">3,840</h4>
             <p className="text-muted-foreground">Regional Sponsors</p>
           </div>
         </div>
