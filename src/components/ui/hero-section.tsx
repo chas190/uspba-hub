@@ -19,7 +19,7 @@ const HeroSection = () => {
           
           {/* Logo Card */}
           <div className="flex justify-center mb-8">
-            <div className="bg-card/10 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect">
+            <div className="bg-card/40 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect">
               <img 
                 src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
                 alt="USPBA Logo" 
