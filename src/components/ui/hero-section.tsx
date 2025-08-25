@@ -29,7 +29,7 @@ const HeroSection = () => {
         
         <div className="space-y-6 mb-12">
           <h3 className="text-3xl md:text-4xl font-bold text-accent">
-            Local Pro Teams
+            Elite Local Pro Teams
           </h3>
           <div className="space-y-2">
             <p className="text-2xl md:text-3xl font-semibold text-foreground">Fuel Dreams & Ignite Passions</p>
