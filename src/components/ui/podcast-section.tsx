@@ -29,6 +29,13 @@ const PodcastSection = () => {
       description: "Featuring upcoming talent from regional divisions and their journey to professional basketball",
       duration: "28:45",
       date: "Dec 10, 2024"
+    },
+    {
+      id: 4,
+      title: "Community Impact Stories",
+      description: "How USPBA teams are making a difference in their local communities through basketball and outreach programs",
+      duration: "36:12",
+      date: "Dec 8, 2024"
     }
   ];
 
@@ -41,7 +48,7 @@ const PodcastSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-black mb-6 text-gradient">
-            USPBA PODCAST
+            USPBA PODCASTS
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
             Listen to exclusive insights, player interviews, and championship coverage
