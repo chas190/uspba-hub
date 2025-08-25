@@ -17,6 +17,14 @@ const HeroSection = () => {
             WELCOME TO
           </h1>
           
+          {/* Logo Card */}
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect max-w-md mx-auto">
+            <img 
+              src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
+              alt="Local Pro Teams Logo" 
+              className="w-full h-auto"
+            />
+          </div>
         </div>
         
         <div className="space-y-6 mb-12">
