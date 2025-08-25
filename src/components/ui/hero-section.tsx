@@ -16,9 +16,7 @@ const HeroSection = () => {
           <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15 py-[40px]">
             WELCOME TO
           </h1>
-          <h2 className="text-8xl md:text-9xl font-black mb-8 text-primary glow-effect">
-            USPBA
-          </h2>
+          
         </div>
         
         <div className="space-y-6 mb-12">
