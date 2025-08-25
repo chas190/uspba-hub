@@ -16,9 +16,16 @@ const HeroSection = () => {
           <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15">
             WELCOME TO
           </h1>
-          <h2 className="text-8xl md:text-9xl font-black mb-8 text-primary glow-effect">
-            USPBA
-          </h2>
+          <div className="flex items-center justify-center gap-4">
+            <img 
+              src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
+              alt="USPBA Logo" 
+              className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24"
+            />
+            <h2 className="text-8xl md:text-9xl font-black text-primary glow-effect">
+              USPBA
+            </h2>
+          </div>
         </div>
         
         <div className="space-y-6 mb-12">
