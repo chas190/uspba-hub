@@ -13,7 +13,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient my-0">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15">
             WELCOME TO
           </h1>
           <h2 className="text-8xl md:text-9xl font-black mb-8 text-primary glow-effect">
