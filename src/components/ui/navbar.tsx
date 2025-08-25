@@ -10,8 +10,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl font-black text-primary">USPBA</h1>
+          <div className="flex-shrink-0 flex items-center gap-2">
+            <img 
+              src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
+              alt="USPBA Logo" 
+              className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
+            />
+            <h1 className="text-lg sm:text-xl md:text-2xl font-black text-primary">USPBA</h1>
           </div>
 
           {/* Desktop Menu */}
