@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <div className="h-10 bg-black" />
       <Card className="h-15 bg-black rounded-none border-none" />
       <Navbar />
       <HeroSection />
