@@ -13,20 +13,10 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15 py-[40px]">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15 py-[4px]">
             WELCOME TO
           </h1>
           
-          {/* Logo Card */}
-          <div className="flex justify-center mb-8">
-            <div className="bg-card/40 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect">
-              <img 
-                src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
-                alt="USPBA Logo" 
-                className="h-40 md:h-50 w-auto object-contain"
-              />
-            </div>
-          </div>
         </div>
         
         <div className="space-y-6 mb-12">
