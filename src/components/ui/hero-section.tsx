@@ -20,9 +20,9 @@ const HeroSection = () => {
             <img 
               src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
               alt="USPBA Logo" 
-              className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24"
+              className="h-20 w-16 sm:h-28 sm:w-20 md:h-32 md:w-24"
             />
-            <h2 className="text-8xl md:text-9xl font-black text-primary glow-effect">
+            <h2 className="text-7xl md:text-8xl font-black text-primary glow-effect">
               USPBA
             </h2>
           </div>
