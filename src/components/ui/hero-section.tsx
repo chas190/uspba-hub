@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="space-y-2">
             <p className="text-2xl md:text-3xl font-semibold text-foreground">Fuel Dreams & Ignite Passions</p>
             <p className="text-xl md:text-2xl font-medium text-muted-foreground">
-              Uniting Stronger Communities
+              To Unite Stronger Communities
             </p>
           </div>
         </div>
