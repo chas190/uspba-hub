@@ -13,10 +13,20 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15 py-[4px]">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15 py-[40px]">
             WELCOME TO
           </h1>
           
+          {/* Logo Card */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-card/10 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect">
+              <img 
+                src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
+                alt="USPBA Logo" 
+                className="h-40 md:h-50 w-auto object-contain"
+              />
+            </div>
+          </div>
         </div>
         
         <div className="space-y-6 mb-12">
@@ -31,6 +41,20 @@ const HeroSection = () => {
           </div>
         </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-center">
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
+            <h4 className="text-4xl font-black text-primary mb-2">256</h4>
+            <p className="text-muted-foreground">Elite Teams</p>
+          </div>
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
+            <h4 className="text-4xl font-black text-accent mb-2">4</h4>
+            <p className="text-muted-foreground">National Regions</p>
+          </div>
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
+            <h4 className="text-4xl font-black text-primary mb-2">3,480</h4>
+            <p className="text-muted-foreground">Regional Sponsors</p>
+          </div>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="default" size="lg" className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform">
