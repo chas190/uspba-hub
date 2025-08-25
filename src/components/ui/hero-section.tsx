@@ -12,17 +12,13 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
-        <div className="mb-8 mt-16">
+        <div className="mb-8">
           <h1 className="text-6xl md:text-8xl font-black mb-6 text-gradient mt-15">
             WELCOME TO
           </h1>
-          <div className="flex justify-center mb-8">
-            <img 
-              src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
-              alt="USPBA Logo" 
-              className="h-36 w-36 sm:h-48 sm:w-48 md:h-56 md:w-56"
-            />
-          </div>
+          <h2 className="text-8xl md:text-9xl font-black mb-8 text-primary glow-effect">
+            USPBA
+          </h2>
         </div>
         
         <div className="space-y-6 mb-12">
@@ -30,9 +26,7 @@ const HeroSection = () => {
             Local Pro Teams
           </h3>
           <div className="space-y-2">
-            <p className="text-2xl md:text-3xl font-semibold text-foreground">
-              Fuel Dreams | Ignite Passions
-            </p>
+            <p className="text-2xl md:text-3xl font-semibold text-foreground">Elite Local Pro Teams</p>
             <p className="text-xl md:text-2xl font-medium text-muted-foreground">
               Uniting Stronger Communities
             </p>
