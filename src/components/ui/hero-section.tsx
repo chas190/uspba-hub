@@ -18,7 +18,7 @@ const HeroSection = () => {
           </h1>
           
           {/* Logo Card */}
-          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect max-w-md mx-auto">
+          <div className="bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect max-w-xs mx-auto">
             <img 
               src="/lovable-uploads/25eb5f6e-c840-4a7f-85d1-9469e0d942ea.png" 
               alt="Local Pro Teams Logo" 
