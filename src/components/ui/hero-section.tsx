@@ -54,11 +54,23 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Choose Your Region Section */}
+        {/* Construction Notice */}
         <div className="mb-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-accent mb-8 text-center">
-            Choose Your Region
-          </h3>
+          <div className="max-w-2xl mx-auto bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
+            <h3 className="text-2xl md:text-3xl font-bold text-accent mb-4">
+              The 2026 USPBA Season Website is Under Construction
+            </h3>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <p className="text-lg text-muted-foreground">Listen to Audio Overview</p>
+              <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold">
+                🎧 Hear It
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Regional Map */}
+        <div className="mb-8">
           <div className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
             <img 
               src="/lovable-uploads/9a3a4802-35cc-4bdf-8f55-eaef349c999f.png" 
@@ -67,8 +79,13 @@ const HeroSection = () => {
             />
           </div>
           
+          {/* Choose Your Region Title */}
+          <h3 className="text-3xl md:text-4xl font-bold text-accent mb-8 text-center mt-8">
+            Choose Your Region
+          </h3>
+          
           {/* Regional Direction Buttons */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
             <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
               North
             </Button>
