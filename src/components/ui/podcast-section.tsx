@@ -131,14 +131,7 @@ const PodcastSection = () => {
               }`}
             >
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg font-bold text-primary">{episode.title}</CardTitle>
-                  {episode.comingSoon && (
-                    <span className="bg-accent text-accent-foreground px-2 py-1 rounded-full text-xs font-semibold">
-                      Coming Soon
-                    </span>
-                  )}
-                </div>
+                <CardTitle className="text-lg font-bold text-primary">{episode.title}</CardTitle>
                 <p className="text-sm text-muted-foreground">{episode.date} • {episode.duration}</p>
               </CardHeader>
               <CardContent>
