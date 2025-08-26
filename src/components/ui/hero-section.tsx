@@ -69,6 +69,11 @@ const HeroSection = () => {
           </div>
         </div>
 
+        {/* 4 US Regions Title */}
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8 text-center">
+          4 US Regions
+        </h2>
+
         {/* Regional Map */}
         <div className="mb-8">
           <div className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
