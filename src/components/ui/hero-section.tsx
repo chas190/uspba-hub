@@ -70,7 +70,7 @@ const HeroSection = () => {
         </div>
 
         {/* USPBA Card */}
-        <div className="w-[90%] mx-auto mb-8">
+        <div className="w-full mx-auto mb-8">
           <div className="relative bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center overflow-hidden h-96 md:h-[500px] flex items-center justify-center">
             {/* Background Image */}
             <div 
