@@ -71,9 +71,21 @@ const HeroSection = () => {
 
         {/* USPBA Card */}
         <div className="w-[90%] mx-auto mb-8">
-          <div className="bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center">
-            <div className="text-5xl md:text-6xl font-black text-primary mb-4">USPBA</div>
-            <p className="text-xl text-muted-foreground">United States Professional Basketball Association</p>
+          <div className="relative bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center overflow-hidden">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+              style={{
+                backgroundImage: `url(/lovable-uploads/075e41b9-ddb5-4eaf-a2c8-cbec52bb8dd4.png)`
+              }}
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40" />
+            {/* Content */}
+            <div className="relative z-10">
+              <div className="text-5xl md:text-6xl font-black text-white mb-4 drop-shadow-lg">USPBA</div>
+              <p className="text-xl text-white/90 font-medium drop-shadow-lg">United States Professional Basketball Association</p>
+            </div>
           </div>
         </div>
 
