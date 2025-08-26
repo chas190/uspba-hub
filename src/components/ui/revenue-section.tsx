@@ -8,7 +8,7 @@ const RevenueSection = () => {
     { icon: Building, label: "BwTown Market Segments", value: "15+", color: "text-primary" },
     { icon: TrendingUp, label: "Revenue Share Partners", value: "90+", color: "text-accent" },
     { icon: Users, label: "Player Influencers", value: "3,840", color: "text-primary" },
-    { icon: DollarSign, label: "Multi-Revenue Partnerships", value: "∞", color: "text-accent" }
+    { icon: DollarSign, label: "Multi-Revenue Partnerships", value: "650k", color: "text-accent" }
   ];
 
   const features = [
