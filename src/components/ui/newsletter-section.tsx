@@ -50,7 +50,7 @@ const NewsletterSection = () => {
     return (
       <section className="py-20 px-4">
         <div className="max-w-2xl mx-auto">
-          <Card className="bg-card/80 backdrop-blur-sm border-primary/30 glow-effect text-center">
+          <Card className="bg-card/80 backdrop-blur-sm border-primary/30 glow-effect text-center mb-20">
             <CardContent className="pt-12 pb-12">
               <CheckCircle className="mx-auto mb-6 text-primary" size={64} />
               <h3 className="text-3xl font-bold text-primary mb-4">Welcome to USPBA!</h3>
