@@ -68,7 +68,7 @@ const NewsletterSection = () => {
   }
 
   return (
-    <section className="py-20 px-4 court-pattern">
+    <section id="newsletter" className="py-20 px-4 court-pattern">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-black mb-6 text-gradient">
@@ -83,7 +83,7 @@ const NewsletterSection = () => {
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-primary text-center flex items-center justify-center">
               <Mail className="mr-3" size={28} />
-              USPBA Newsletter
+              Join USPBA's Newsletter
             </CardTitle>
           </CardHeader>
           <CardContent>

@@ -34,8 +34,8 @@ const Navbar = () => {
               <a href="#revenue" className="text-foreground hover:text-primary transition-colors font-medium">
                 Revenue Share
               </a>
-              <Button variant="default" size="sm" className="ml-4">
-                Join Newsletter
+              <Button variant="default" size="sm" className="ml-4" asChild>
+                <a href="#newsletter">Join Newsletter</a>
               </Button>
             </div>
           </div>
@@ -69,8 +69,8 @@ const Navbar = () => {
                 Revenue Share
               </a>
               <div className="px-3 py-2">
-                <Button variant="default" size="sm" className="w-full">
-                  Join Newsletter
+                <Button variant="default" size="sm" className="w-full" asChild>
+                  <a href="#newsletter">Join Newsletter</a>
                 </Button>
               </div>
             </div>
