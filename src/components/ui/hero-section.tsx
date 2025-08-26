@@ -61,7 +61,7 @@ const HeroSection = () => {
           </h3>
           <div className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-border glow-effect">
             <img 
-              src="/lovable-uploads/4760b040-2b6d-45f7-aabd-8e65569ec6f9.png" 
+              src="/lovable-uploads/9a3a4802-35cc-4bdf-8f55-eaef349c999f.png" 
               alt="US Regional Map for Elite Pro Teams" 
               className="w-full h-auto rounded-lg"
             />
