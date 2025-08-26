@@ -91,16 +91,16 @@ const HeroSection = () => {
           
           {/* Regional Direction Buttons */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20 border-orange-500 shadow-[0_0_10px_hsl(var(--orange))] hover:shadow-[0_0_15px_hsl(var(--orange))]">
               North
             </Button>
-            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20 border-orange-500 shadow-[0_0_10px_hsl(var(--orange))] hover:shadow-[0_0_15px_hsl(var(--orange))]">
               South
             </Button>
-            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20 border-orange-500 shadow-[0_0_10px_hsl(var(--orange))] hover:shadow-[0_0_15px_hsl(var(--orange))]">
               East
             </Button>
-            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20 border-orange-500 shadow-[0_0_10px_hsl(var(--orange))] hover:shadow-[0_0_15px_hsl(var(--orange))]">
               West
             </Button>
           </div>
