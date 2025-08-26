@@ -1,10 +1,33 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { TrendingUp, DollarSign, Users, Building, Calendar } from "lucide-react";
 import playersImage from "@/assets/players-silhouette.jpg";
 
 const RevenueSection = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: ""
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Demo request submitted:", formData);
+    // Here you would typically send the data to your backend
+    setIsDialogOpen(false);
+    setFormData({ name: "", email: "", phone: "" });
+  };
+
   const stats = [
     { icon: Building, label: "BwTown Market Segments", value: "15+", color: "text-primary" },
     { icon: TrendingUp, label: "Revenue Share Partners", value: "90+", color: "text-accent" },
@@ -74,14 +97,70 @@ const RevenueSection = () => {
                   <Badge variant="secondary" className="bg-accent/20 text-accent border-accent/30">
                     {feature.highlight}
                   </Badge>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="absolute bottom-4 right-4 glow-effect hover:scale-105 transition-transform"
-                  >
-                    <Calendar size={16} className="mr-2" />
-                    Book a Demo
-                  </Button>
+                  <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="absolute bottom-4 right-4 glow-effect hover:scale-105 transition-transform"
+                      >
+                        <Calendar size={16} className="mr-2" />
+                        Book a Demo
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle className="text-primary">Book a Demo</DialogTitle>
+                      </DialogHeader>
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Full Name</Label>
+                          <Input
+                            id="name"
+                            placeholder="Enter your full name"
+                            value={formData.name}
+                            onChange={(e) => handleInputChange("name", e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="Enter your email"
+                            value={formData.email}
+                            onChange={(e) => handleInputChange("email", e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">Phone Number</Label>
+                          <Input
+                            id="phone"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            value={formData.phone}
+                            onChange={(e) => handleInputChange("phone", e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="flex gap-2 pt-4">
+                          <Button 
+                            type="button" 
+                            variant="outline" 
+                            onClick={() => setIsDialogOpen(false)}
+                            className="flex-1"
+                          >
+                            Cancel
+                          </Button>
+                          <Button type="submit" className="flex-1">
+                            Submit Request
+                          </Button>
+                        </div>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
                 </CardContent>
               </Card>
             ))}
