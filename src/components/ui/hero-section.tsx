@@ -69,6 +69,14 @@ const HeroSection = () => {
           </div>
         </div>
 
+        {/* USPBA Card */}
+        <div className="w-[90%] mx-auto mb-8">
+          <div className="bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center">
+            <div className="text-5xl md:text-6xl font-black text-primary mb-4">USPBA</div>
+            <p className="text-xl text-muted-foreground">United States Professional Basketball Association</p>
+          </div>
+        </div>
+
         {/* 4 US Regions Title */}
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8 text-center">
           4 US Regions
