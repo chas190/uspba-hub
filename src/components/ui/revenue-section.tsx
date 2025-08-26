@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, DollarSign, Users, Building } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { TrendingUp, DollarSign, Users, Building, Calendar } from "lucide-react";
 import playersImage from "@/assets/players-silhouette.jpg";
 
 const RevenueSection = () => {
@@ -64,15 +65,23 @@ const RevenueSection = () => {
           {/* Left Column - Features */}
           <div className="space-y-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
+              <Card key={index} className="bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 relative">
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-primary">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pb-16">
                   <p className="text-muted-foreground mb-4">{feature.description}</p>
                   <Badge variant="secondary" className="bg-accent/20 text-accent border-accent/30">
                     {feature.highlight}
                   </Badge>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="absolute bottom-4 right-4 glow-effect hover:scale-105 transition-transform"
+                  >
+                    <Calendar size={16} className="mr-2" />
+                    Book a Demo
+                  </Button>
                 </CardContent>
               </Card>
             ))}
