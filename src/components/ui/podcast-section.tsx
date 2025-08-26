@@ -14,42 +14,48 @@ const PodcastSection = () => {
       title: "USPBA Elite Championship Preview",
       description: "Breaking down the top contenders for this season's championship across all 4 regions",
       duration: "45:23",
-      date: "Dec 15, 2024"
+      date: "Dec 15, 2024",
+      comingSoon: false
     },
     {
       id: 2,
       title: "Revenue Share Success Stories",
       description: "How BwTown partnerships are transforming local communities and creating sustainable revenue",
       duration: "32:18",
-      date: "Dec 12, 2024"
+      date: "Dec 12, 2024",
+      comingSoon: false
     },
     {
       id: 3,
       title: "Player Spotlight: Rising Stars",
       description: "Featuring upcoming talent from regional divisions and their journey to professional basketball",
       duration: "28:45",
-      date: "Dec 10, 2024"
+      date: "Dec 10, 2024",
+      comingSoon: false
     },
     {
       id: 4,
       title: "Community Impact Stories",
       description: "How USPBA teams are making a difference in their local communities through basketball and outreach programs",
       duration: "36:12",
-      date: "Dec 8, 2024"
+      date: "Dec 8, 2024",
+      comingSoon: true
     },
     {
       id: 5,
       title: "Regional Championship Highlights",
       description: "Recap of the most exciting moments from regional championships and playoff matches",
       duration: "41:15",
-      date: "Dec 5, 2024"
+      date: "Dec 5, 2024",
+      comingSoon: true
     },
     {
       id: 6,
       title: "Future of Professional Basketball",
       description: "Discussing the evolution of professional basketball and USPBA's role in shaping the future",
       duration: "38:27",
-      date: "Dec 3, 2024"
+      date: "Dec 3, 2024",
+      comingSoon: true
     }
   ];
 
@@ -125,14 +131,25 @@ const PodcastSection = () => {
               }`}
             >
               <CardHeader>
-                <CardTitle className="text-lg font-bold text-primary">{episode.title}</CardTitle>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-lg font-bold text-primary">{episode.title}</CardTitle>
+                  {episode.comingSoon && (
+                    <span className="bg-accent text-accent-foreground px-2 py-1 rounded-full text-xs font-semibold">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-muted-foreground">{episode.date} • {episode.duration}</p>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">{episode.description}</p>
-                <Button variant="outline" className="w-full glow-effect">
+                <Button 
+                  variant="outline" 
+                  className="w-full glow-effect" 
+                  disabled={episode.comingSoon}
+                >
                   <Play size={16} className="mr-2" />
-                  Listen Now
+                  {episode.comingSoon ? "Coming Soon" : "Listen Now"}
                 </Button>
               </CardContent>
             </Card>
