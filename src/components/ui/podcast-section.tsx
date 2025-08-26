@@ -36,6 +36,20 @@ const PodcastSection = () => {
       description: "How USPBA teams are making a difference in their local communities through basketball and outreach programs",
       duration: "36:12",
       date: "Dec 8, 2024"
+    },
+    {
+      id: 5,
+      title: "Regional Championship Highlights",
+      description: "Recap of the most exciting moments from regional championships and playoff matches",
+      duration: "41:15",
+      date: "Dec 5, 2024"
+    },
+    {
+      id: 6,
+      title: "Future of Professional Basketball",
+      description: "Discussing the evolution of professional basketball and USPBA's role in shaping the future",
+      duration: "38:27",
+      date: "Dec 3, 2024"
     }
   ];
 
@@ -103,8 +117,13 @@ const PodcastSection = () => {
 
         {/* Episode List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {episodes.map((episode) => (
-            <Card key={episode.id} className="bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
+          {episodes.map((episode, index) => (
+            <Card 
+              key={episode.id} 
+              className={`bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105 ${
+                index >= 4 ? 'hidden lg:block' : ''
+              }`}
+            >
               <CardHeader>
                 <CardTitle className="text-lg font-bold text-primary">{episode.title}</CardTitle>
                 <p className="text-sm text-muted-foreground">{episode.date} • {episode.duration}</p>
