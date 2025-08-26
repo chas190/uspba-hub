@@ -66,6 +66,22 @@ const HeroSection = () => {
               className="w-full h-auto rounded-lg"
             />
           </div>
+          
+          {/* Regional Direction Buttons */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-8">
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+              North
+            </Button>
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+              South
+            </Button>
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+              East
+            </Button>
+            <Button variant="outline" className="bg-background/20 backdrop-blur-sm hover:bg-primary/20">
+              West
+            </Button>
+          </div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
