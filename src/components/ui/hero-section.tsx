@@ -1,35 +1,15 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
+import { useState } from "react";
 
 const HeroSection = () => {
-  const playAudio = () => {
-    console.log('Button clicked - attempting to play audio...');
-    
-    // Create audio with more explicit settings
-    const audio = new Audio();
-    audio.src = '/audio/uspbawelcome.wav';
-    audio.preload = 'auto';
-    
-    // Add event listeners for debugging
-    audio.addEventListener('loadstart', () => console.log('Audio loading started'));
-    audio.addEventListener('canplay', () => console.log('Audio can play'));
-    audio.addEventListener('loadeddata', () => console.log('Audio data loaded'));
-    audio.addEventListener('error', (e) => console.error('Audio error:', e));
-    
-    // Try to play with better error handling
-    const playPromise = audio.play();
-    
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          console.log('Audio played successfully!');
-        })
-        .catch((error) => {
-          console.error('Audio play failed:', error);
-          // More user-friendly message
-          alert('Audio playback failed. This may be due to browser restrictions. Try clicking the button again or refresh the page.');
-        });
-    }
+  const [showPlayer, setShowPlayer] = useState(false);
+  const openAudioPlayer = () => {
+    setShowPlayer(true);
+  };
+
+  const closeAudioPlayer = () => {
+    setShowPlayer(false);
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Background Image */}
@@ -93,7 +73,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <p className="text-lg text-muted-foreground">Listen to Audio Overview</p>
               <button 
-                onClick={playAudio}
+                onClick={openAudioPlayer}
                 className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors cursor-pointer"
               >
                 🎧 Hear It
@@ -168,6 +148,43 @@ const HeroSection = () => {
           </Button>
         </div>
       </div>
+
+      {/* Audio Player Modal */}
+      {showPlayer && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-card p-6 rounded-lg border border-border max-w-md w-full mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-foreground">USPBA Welcome Audio</h3>
+              <button
+                onClick={closeAudioPlayer}
+                className="text-muted-foreground hover:text-foreground text-xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">Listen to the audio overview of the USPBA</p>
+              
+              {/* Native HTML5 Audio Player */}
+              <audio 
+                controls 
+                className="w-full"
+                preload="auto"
+              >
+                <source src="/audio/uspbawelcome.wav" type="audio/wav" />
+                Your browser does not support the audio element.
+              </audio>
+              
+              <div className="flex justify-end">
+                <Button variant="outline" onClick={closeAudioPlayer}>
+                  Close
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>;
 };
 export default HeroSection;
