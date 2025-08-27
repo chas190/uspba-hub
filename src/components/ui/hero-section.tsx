@@ -1,25 +1,33 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
+import { useRef } from "react";
+
 const HeroSection = () => {
-  const playAudio = () => {
-    // Try to play using the audio element in the DOM first
-    const audioElement = document.getElementById('uspba-audio') as HTMLAudioElement;
-    if (audioElement) {
-      audioElement.play().catch(error => {
-        console.error('Error playing audio from element:', error);
-      });
-      return;
-    }
-    
-    // Fallback to creating new Audio object
-    const audio = new Audio('/uspbawelcome.mp3');
-    audio.play().catch(error => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const playAudio = async () => {
+    try {
+      if (audioRef.current) {
+        console.log('Playing audio via ref...');
+        await audioRef.current.play();
+        console.log('Audio played successfully via ref');
+      } else {
+        console.log('Audio ref not available, trying direct element access...');
+        const audioElement = document.getElementById('uspba-audio') as HTMLAudioElement;
+        if (audioElement) {
+          await audioElement.play();
+          console.log('Audio played successfully via element');
+        } else {
+          throw new Error('No audio element found');
+        }
+      }
+    } catch (error) {
       console.error('Error playing audio:', error);
-    });
+      alert('Audio playback failed. Please check your browser settings or try again.');
+    }
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
-      {/* Hidden audio element */}
-      <audio id="uspba-audio" preload="auto">
+      {/* Audio element with ref */}
+      <audio ref={audioRef} id="uspba-audio" preload="auto">
         <source src="/uspbawelcome.mp3" type="audio/mpeg" />
       </audio>
       {/* Background Image */}
