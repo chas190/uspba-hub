@@ -127,24 +127,32 @@ const PodcastSection = () => {
           </p>
         </div>
 
-        {/* Hidden Audio Element */}
-        <audio
-          ref={audioRef}
-          preload="auto"
-          onError={(e) => {
-            console.error('Audio loading error:', e);
-            console.error('Audio element:', audioRef.current);
-          }}
-          onLoadStart={() => console.log('Audio loading started')}
-          onCanPlay={() => console.log('Audio can play')}
-          onLoadedData={() => console.log('Audio data loaded')}
-          onLoadedMetadata={() => console.log('Audio metadata loaded, duration:', audioRef.current?.duration)}
-        >
-          <source src="/uspbawelcome.wav" type="audio/wav" />
-          <source src="/audio/uspbawelcome.wav" type="audio/wav" />
-          <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
-          <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
-        </audio>
+        {/* Audio Player - Fallback to native controls */}
+        <div className="bg-muted/20 p-4 rounded-lg">
+          <p className="text-sm text-muted-foreground mb-3">USPBA Welcome Audio</p>
+          <audio
+            ref={audioRef}
+            controls
+            className="w-full"
+            preload="auto"
+            onError={(e) => {
+              console.error('Audio loading error:', e);
+              console.error('Current audio src:', audioRef.current?.currentSrc);
+            }}
+            onLoadStart={() => console.log('Audio loading started')}
+            onCanPlay={() => console.log('Audio can play')}
+            onLoadedData={() => console.log('Audio data loaded')}
+            onLoadedMetadata={() => {
+              console.log('Audio metadata loaded, duration:', audioRef.current?.duration);
+              setDuration(audioRef.current?.duration || 0);
+            }}
+            src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav"
+          >
+            <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
+            <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
 
         {/* Featured Episode Player */}
         <Card className="bg-card/80 backdrop-blur-sm border-border/50 glow-effect mb-12 max-w-4xl mx-auto">
