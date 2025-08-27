@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
 const HeroSection = () => {
   const playAudio = () => {
-    const audio = new Audio('https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3');
+    const audio = new Audio('/audio/uspbawelcome.mp3');
     audio.play().catch(error => {
       console.error('Error playing audio:', error);
     });
