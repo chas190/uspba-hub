@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
-import audioFile from "@/assets/uspbawelcome.wav";
 import { useState } from "react";
 
 const HeroSection = () => {
@@ -179,7 +178,7 @@ const HeroSection = () => {
                 onLoadStart={() => console.log('Audio loading started')}
                 onCanPlay={() => console.log('Audio can play')}
                 onLoadedData={() => console.log('Audio data loaded')}
-                src={audioFile}
+                src="/uspbawelcome.wav"
               >
                 Your browser does not support the audio element.
               </audio>
