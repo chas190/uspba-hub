@@ -178,8 +178,10 @@ const HeroSection = () => {
                 onLoadStart={() => console.log('Audio loading started')}
                 onCanPlay={() => console.log('Audio can play')}
                 onLoadedData={() => console.log('Audio data loaded')}
-                src="/uspbawelcome.wav"
               >
+                <source src="/audio/uspbawelcome.wav" type="audio/wav" />
+                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
+                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
               
