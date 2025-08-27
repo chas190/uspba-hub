@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
+import audioFile from "@/assets/uspbawelcome.wav";
 import { useState } from "react";
 
 const HeroSection = () => {
@@ -178,10 +179,8 @@ const HeroSection = () => {
                 onLoadStart={() => console.log('Audio loading started')}
                 onCanPlay={() => console.log('Audio can play')}
                 onLoadedData={() => console.log('Audio data loaded')}
+                src={audioFile}
               >
-                <source src="/audio/uspbawelcome.wav" type="audio/wav" />
-                <source src="/audio/uspbawelcome.mp3" type="audio/mpeg" />
-                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
                 Your browser does not support the audio element.
               </audio>
               
