@@ -180,6 +180,15 @@ const PodcastSection = () => {
             <p className="text-muted-foreground">Introduction to the United States Pro Basketball Association</p>
           </CardHeader>
           <CardContent>
+            {/* Hidden Audio Element for Custom Player */}
+            <audio
+              ref={audioRef}
+              preload="metadata"
+            >
+              <source src="https://corp.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
+              <source src="https://corp.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
+            </audio>
+            
             {/* Audio Player */}
             <div className="space-y-4">
               {/* Progress Bar */}
