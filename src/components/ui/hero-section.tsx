@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
 const HeroSection = () => {
+  const playAudio = () => {
+    const audio = new Audio('https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3');
+    audio.play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style={{
@@ -62,9 +68,12 @@ const HeroSection = () => {
             </h3>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <p className="text-lg text-muted-foreground">Listen to Audio Overview</p>
-              <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold">
+              <button 
+                onClick={playAudio}
+                className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors cursor-pointer"
+              >
                 🎧 Hear It
-              </div>
+              </button>
             </div>
           </div>
         </div>
