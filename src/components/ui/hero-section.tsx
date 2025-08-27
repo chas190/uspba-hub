@@ -116,7 +116,7 @@ const HeroSection = () => {
           
           {/* Choose Your Region Title */}
           <h3 className="text-3xl md:text-4xl font-bold text-accent mb-8 text-center mt-8">
-            Choose Your Region
+            Choose Your Home Team Region
           </h3>
           
           {/* Regional Direction Buttons */}
