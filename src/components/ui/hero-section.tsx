@@ -1,43 +1,23 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
-import { useRef } from "react";
 
 const HeroSection = () => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const playAudio = async () => {
-    try {
-      if (audioRef.current) {
-        // Don't call load() as it interrupts playback
-        console.log('Audio source:', audioRef.current.src);
-        console.log('Audio current source:', audioRef.current.currentSrc);
-        
-        // Ensure the audio is ready to play
-        if (audioRef.current.readyState >= 2) {
-          await audioRef.current.play();
-          console.log('Audio played successfully!');
-        } else {
-          // Wait for the audio to be ready
-          audioRef.current.addEventListener('canplay', async () => {
-            try {
-              await audioRef.current!.play();
-              console.log('Audio played successfully after loading!');
-            } catch (error) {
-              console.error('Error playing audio after loading:', error);
-            }
-          }, { once: true });
-        }
-      } else {
-        console.error('Audio ref is null');
-      }
-    } catch (error) {
-      console.error('Error playing audio:', error);
-    }
+  const playAudio = () => {
+    // Create a fresh audio instance each time
+    const audio = new Audio('/audio/uspbawelcome.wav');
+    
+    // Simple promise-based approach
+    audio.play()
+      .then(() => {
+        console.log('Audio played successfully!');
+      })
+      .catch((error) => {
+        console.error('Audio play failed:', error);
+        // Fallback: show user message about browser restrictions
+        alert('Audio playback may be blocked by your browser. Please enable audio autoplay or interact with the page first.');
+      });
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
-      {/* Audio element with ref */}
-      <audio ref={audioRef} id="uspba-audio" preload="auto">
-        <source src="/audio/uspbawelcome.wav" type="audio/wav" />
-      </audio>
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style={{
       backgroundImage: `url(${heroImage})`
