@@ -52,6 +52,9 @@ const Region = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-center mb-4">
             {regionName?.charAt(0).toUpperCase() + regionName?.slice(1)} Region
           </h1>
+          <h3 className="text-lg text-center text-muted-foreground mb-4">
+            More states are coming soon
+          </h3>
           <p className="text-xl text-center text-muted-foreground mb-8">
             Choose your preferred state as your home team location
           </p>
