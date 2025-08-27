@@ -131,8 +131,16 @@ const PodcastSection = () => {
         <audio
           ref={audioRef}
           preload="auto"
-          onError={(e) => console.error('Audio loading error:', e)}
+          onError={(e) => {
+            console.error('Audio loading error:', e);
+            console.error('Audio element:', audioRef.current);
+          }}
+          onLoadStart={() => console.log('Audio loading started')}
+          onCanPlay={() => console.log('Audio can play')}
+          onLoadedData={() => console.log('Audio data loaded')}
+          onLoadedMetadata={() => console.log('Audio metadata loaded, duration:', audioRef.current?.duration)}
         >
+          <source src="/uspbawelcome.wav" type="audio/wav" />
           <source src="/audio/uspbawelcome.wav" type="audio/wav" />
           <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
           <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
