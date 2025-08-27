@@ -31,7 +31,7 @@ const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Audio element with ref */}
       <audio ref={audioRef} id="uspba-audio" preload="auto">
-        <source src="/audio/uspbawelcome.mp3" type="audio/mpeg" />
+        <source src="/audio/uspbawelcome.wav" type="audio/wav" />
       </audio>
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style={{
