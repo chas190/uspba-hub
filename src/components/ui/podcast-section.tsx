@@ -146,8 +146,8 @@ const PodcastSection = () => {
                   setDuration(target.duration);
                 }}
               >
-                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
-                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
+                <source src="https://corp.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
+                <source src="https://corp.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
               
@@ -156,14 +156,14 @@ const PodcastSection = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => window.open('https://teams1.uspba.pro/assets/audio/uspbawelcome.wav', '_blank')}
+                  onClick={() => window.open('https://corp.uspba.pro/assets/audio/uspbawelcome.wav', '_blank')}
                 >
                   🎧 Listen to WAV
                 </Button>
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => window.open('https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3', '_blank')}
+                  onClick={() => window.open('https://corp.uspba.pro/assets/audio/uspbawelcome.mp3', '_blank')}
                 >
                   🎧 Listen to MP3
                 </Button>
