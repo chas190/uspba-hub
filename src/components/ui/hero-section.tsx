@@ -5,10 +5,13 @@ import { useState } from "react";
 const HeroSection = () => {
   const [showPlayer, setShowPlayer] = useState(false);
   const openAudioPlayer = () => {
+    console.log('Hear It button clicked!');
     setShowPlayer(true);
+    console.log('ShowPlayer set to true');
   };
 
   const closeAudioPlayer = () => {
+    console.log('Closing audio player');
     setShowPlayer(false);
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
