@@ -3,19 +3,40 @@ import heroImage from "@/assets/hero-basketball-court.jpg";
 const HeroSection = () => {
   const playAudio = () => {
     console.log('Attempting to play audio...');
-    const audio = new Audio('/audio/uspbawelcome.mp3');
     
-    audio.addEventListener('loadstart', () => console.log('Audio loading started'));
-    audio.addEventListener('canplay', () => console.log('Audio can play'));
-    audio.addEventListener('error', (e) => console.error('Audio error event:', e));
+    // Try multiple possible paths
+    const possiblePaths = [
+      '/audio/uspbawelcome.mp3',
+      '/public/audio/uspbawelcome.mp3',
+      './audio/uspbawelcome.mp3'
+    ];
     
-    audio.play()
-      .then(() => console.log('Audio playing successfully'))
-      .catch(error => {
-        console.error('Error playing audio:', error);
-        // Fallback: try to prompt user to interact first
-        console.log('Trying to load audio for user interaction...');
-      });
+    const audio = new Audio();
+    
+    const tryNextPath = (index = 0) => {
+      if (index >= possiblePaths.length) {
+        console.error('All audio paths failed');
+        return;
+      }
+      
+      const path = possiblePaths[index];
+      console.log(`Trying path: ${path}`);
+      
+      audio.src = path;
+      audio.load();
+      
+      audio.addEventListener('loadeddata', () => {
+        console.log(`Successfully loaded: ${path}`);
+        audio.play().catch(e => console.error('Play failed:', e));
+      }, { once: true });
+      
+      audio.addEventListener('error', () => {
+        console.log(`Failed to load: ${path}`);
+        tryNextPath(index + 1);
+      }, { once: true });
+    };
+    
+    tryNextPath();
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Background Image */}
