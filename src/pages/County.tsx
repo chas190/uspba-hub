@@ -142,8 +142,11 @@ const County = () => {
                 Be the first to know when teams become available in your area.
               </p>
               <Button variant="default" size="lg">
-                Get Notified
+                Get Notified and Sign Up
               </Button>
+              <p className="text-sm text-muted-foreground mt-3">
+                Submit your interest in this home team market
+              </p>
             </div>
           </div>
         )}
