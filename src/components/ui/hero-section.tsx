@@ -3,19 +3,33 @@ import heroImage from "@/assets/hero-basketball-court.jpg";
 
 const HeroSection = () => {
   const playAudio = () => {
-    // Create a fresh audio instance each time
-    const audio = new Audio('/audio/uspbawelcome.wav');
+    console.log('Button clicked - attempting to play audio...');
     
-    // Simple promise-based approach
-    audio.play()
-      .then(() => {
-        console.log('Audio played successfully!');
-      })
-      .catch((error) => {
-        console.error('Audio play failed:', error);
-        // Fallback: show user message about browser restrictions
-        alert('Audio playback may be blocked by your browser. Please enable audio autoplay or interact with the page first.');
-      });
+    // Create audio with more explicit settings
+    const audio = new Audio();
+    audio.src = '/audio/uspbawelcome.wav';
+    audio.preload = 'auto';
+    
+    // Add event listeners for debugging
+    audio.addEventListener('loadstart', () => console.log('Audio loading started'));
+    audio.addEventListener('canplay', () => console.log('Audio can play'));
+    audio.addEventListener('loadeddata', () => console.log('Audio data loaded'));
+    audio.addEventListener('error', (e) => console.error('Audio error:', e));
+    
+    // Try to play with better error handling
+    const playPromise = audio.play();
+    
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log('Audio played successfully!');
+        })
+        .catch((error) => {
+          console.error('Audio play failed:', error);
+          // More user-friendly message
+          alert('Audio playback failed. This may be due to browser restrictions. Try clicking the button again or refresh the page.');
+        });
+    }
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Background Image */}
