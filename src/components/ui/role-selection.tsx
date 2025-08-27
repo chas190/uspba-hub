@@ -46,35 +46,35 @@ const roleOptions = [
 
 export function RoleSelection({ onRoleSelect }: RoleSelectionProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-4">
       <div className="text-center">
-        <h2 className="text-2xl font-bold mb-2">Choose Your Role</h2>
-        <p className="text-muted-foreground">
+        <h2 className="text-3xl font-bold mb-3">Choose Your Role</h2>
+        <p className="text-lg text-muted-foreground">
           Select the role that best describes your involvement with the team
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {roleOptions.map((role) => {
           const IconComponent = role.icon;
           return (
             <Card 
               key={role.id} 
-              className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 hover:border-primary"
+              className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 hover:border-primary p-2"
               onClick={() => onRoleSelect(role.id)}
             >
-              <CardHeader className="text-center pb-2">
-                <div className="flex justify-center mb-3">
-                  <IconComponent className={`h-12 w-12 ${role.color}`} />
+              <CardHeader className="text-center pb-3">
+                <div className="flex justify-center mb-4">
+                  <IconComponent className={`h-16 w-16 ${role.color}`} />
                 </div>
-                <CardTitle className="text-lg">{role.title}</CardTitle>
+                <CardTitle className="text-xl">{role.title}</CardTitle>
               </CardHeader>
-              <CardContent className="text-center pt-0">
-                <p className="text-sm text-muted-foreground mb-4">
+              <CardContent className="text-center pt-0 pb-4">
+                <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                   {role.description}
                 </p>
-                <Button variant="outline" className="w-full">
-                  Select Role
+                <Button variant="outline" className="w-full py-3">
+                  Select This Role
                 </Button>
               </CardContent>
             </Card>

@@ -149,34 +149,45 @@ const County = () => {
                 Elite pro teams are being recruited for {formattedCountyName} County. 
                 Be the first to know when teams become available in your area.
               </p>
-              <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <Dialog open={dialogOpen} onOpenChange={(open) => {
+                setDialogOpen(open);
+                if (open) {
+                  // Reset form state when opening
+                  setShowForm(false);
+                  setSelectedRole("");
+                  // Scroll to top of page when dialog opens
+                  setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                }
+              }}>
                 <DialogTrigger asChild>
                   <Button variant="default" size="lg">
                     Get Notified and Sign Up
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl">
-                  {!showForm ? (
-                    <RoleSelection 
-                      onRoleSelect={(role) => {
-                        setSelectedRole(role);
-                        setShowForm(true);
-                      }}
-                    />
-                  ) : (
-                    <TeamSignupForm
-                      selectedRole={selectedRole}
-                      countyName={formattedCountyName || ""}
-                      stateName={formattedStateName || ""}
-                      regionName={regionName?.charAt(0).toUpperCase() + regionName?.slice(1) || ""}
-                      onSuccess={() => {
-                        setDialogOpen(false);
-                        setShowForm(false);
-                        setSelectedRole("");
-                      }}
-                      onBack={() => setShowForm(false)}
-                    />
-                  )}
+                <DialogContent className="max-w-4xl max-h-[85vh] overflow-hidden flex flex-col">
+                  <div className="overflow-y-auto flex-1 p-1">
+                    {!showForm ? (
+                      <RoleSelection 
+                        onRoleSelect={(role) => {
+                          setSelectedRole(role);
+                          setShowForm(true);
+                        }}
+                      />
+                    ) : (
+                      <TeamSignupForm
+                        selectedRole={selectedRole}
+                        countyName={formattedCountyName || ""}
+                        stateName={formattedStateName || ""}
+                        regionName={regionName?.charAt(0).toUpperCase() + regionName?.slice(1) || ""}
+                        onSuccess={() => {
+                          setDialogOpen(false);
+                          setShowForm(false);
+                          setSelectedRole("");
+                        }}
+                        onBack={() => setShowForm(false)}
+                      />
+                    )}
+                  </div>
                 </DialogContent>
               </Dialog>
               <p className="text-sm text-muted-foreground mt-3">
