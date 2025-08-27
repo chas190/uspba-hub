@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Crown, Users, UserCheck, Building, Handshake } from "lucide-react";
+import { ArrowLeft, Crown, Users, UserCheck, Building, Handshake, Heart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -21,7 +21,8 @@ const roleIcons = {
   coach: UserCheck,
   player: Users,
   sponsor: Building,
-  affiliate_team: Handshake
+  affiliate_team: Handshake,
+  team_fan: Heart
 };
 
 const roleLabels = {
@@ -29,7 +30,8 @@ const roleLabels = {
   coach: "Coach",
   player: "Player", 
   sponsor: "Sponsor",
-  affiliate_team: "Affiliate Team"
+  affiliate_team: "Affiliate Team",
+  team_fan: "Team Fan"
 };
 
 export function TeamSignupForm({ 

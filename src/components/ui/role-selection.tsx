@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Crown, Users, UserCheck, Building, Handshake } from "lucide-react";
+import { Crown, Users, UserCheck, Building, Handshake, Heart } from "lucide-react";
 
 interface RoleSelectionProps {
   onRoleSelect: (role: string) => void;
@@ -41,6 +41,13 @@ const roleOptions = [
     description: "Partner with professional teams as a feeder organization",
     icon: Handshake,
     color: "text-orange-600"
+  },
+  {
+    id: "team_fan",
+    title: "Team Fan",
+    description: "Support your favorite teams and connect with the community",
+    icon: Heart,
+    color: "text-red-600"
   }
 ];
 
@@ -54,7 +61,7 @@ export function RoleSelection({ onRoleSelect }: RoleSelectionProps) {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {roleOptions.map((role) => {
           const IconComponent = role.icon;
           return (
