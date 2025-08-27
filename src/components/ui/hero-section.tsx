@@ -71,7 +71,7 @@ const HeroSection = () => {
 
         {/* USPBA Card */}
         <div className="w-full mx-auto mb-8">
-          <div className="relative bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center overflow-hidden h-96 md:h-[500px] flex items-center justify-center">
+          <div className="relative bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center overflow-hidden h-96 md:h-[500px] flex items-end justify-center pb-16">
             {/* Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
@@ -84,7 +84,7 @@ const HeroSection = () => {
             {/* Content */}
             <div className="relative z-10">
               <div className="text-5xl md:text-6xl font-black text-white mb-4 drop-shadow-lg">USPBA</div>
-              <p className="text-xl text-white/90 font-medium drop-shadow-lg">United States Professional Basketball Association</p>
+              <p className="text-xl text-white/90 font-medium drop-shadow-lg">United States Pro Basketball Association</p>
             </div>
           </div>
         </div>
