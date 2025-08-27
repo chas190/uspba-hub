@@ -3,7 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowLeft, MapPin, Trophy, Users } from "lucide-react";
+import { RoleSelection } from "@/components/ui/role-selection";
+import { TeamSignupForm } from "@/components/ui/team-signup-form";
+import { useState } from "react";
 
 const County = () => {
   const { regionName, stateName, countyName } = useParams<{ 
@@ -11,6 +15,10 @@ const County = () => {
     stateName: string; 
     countyName: string; 
   }>();
+
+  const [selectedRole, setSelectedRole] = useState<string>("");
+  const [showForm, setShowForm] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const { data: teams, isLoading } = useQuery({
     queryKey: ['teams', countyName],
@@ -141,9 +149,36 @@ const County = () => {
                 Elite pro teams are being recruited for {formattedCountyName} County. 
                 Be the first to know when teams become available in your area.
               </p>
-              <Button variant="default" size="lg">
-                Get Notified and Sign Up
-              </Button>
+              <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="default" size="lg">
+                    Get Notified and Sign Up
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl">
+                  {!showForm ? (
+                    <RoleSelection 
+                      onRoleSelect={(role) => {
+                        setSelectedRole(role);
+                        setShowForm(true);
+                      }}
+                    />
+                  ) : (
+                    <TeamSignupForm
+                      selectedRole={selectedRole}
+                      countyName={formattedCountyName || ""}
+                      stateName={formattedStateName || ""}
+                      regionName={regionName?.charAt(0).toUpperCase() + regionName?.slice(1) || ""}
+                      onSuccess={() => {
+                        setDialogOpen(false);
+                        setShowForm(false);
+                        setSelectedRole("");
+                      }}
+                      onBack={() => setShowForm(false)}
+                    />
+                  )}
+                </DialogContent>
+              </Dialog>
               <p className="text-sm text-muted-foreground mt-3">
                 Submit your interest in this home team market
               </p>
