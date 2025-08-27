@@ -127,31 +127,49 @@ const PodcastSection = () => {
           </p>
         </div>
 
-        {/* Audio Player - Fallback to native controls */}
-        <div className="bg-muted/20 p-4 rounded-lg">
-          <p className="text-sm text-muted-foreground mb-3">USPBA Welcome Audio</p>
-          <audio
-            ref={audioRef}
-            controls
-            className="w-full"
-            preload="auto"
-            onError={(e) => {
-              console.error('Audio loading error:', e);
-              console.error('Current audio src:', audioRef.current?.currentSrc);
-            }}
-            onLoadStart={() => console.log('Audio loading started')}
-            onCanPlay={() => console.log('Audio can play')}
-            onLoadedData={() => console.log('Audio data loaded')}
-            onLoadedMetadata={() => {
-              console.log('Audio metadata loaded, duration:', audioRef.current?.duration);
-              setDuration(audioRef.current?.duration || 0);
-            }}
-            src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav"
-          >
-            <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
-            <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
+        {/* Audio Player - Direct Link Approach */}
+        <div className="bg-muted/20 p-4 rounded-lg space-y-4">
+          <div>
+            <p className="text-sm text-muted-foreground mb-3">USPBA Welcome Audio</p>
+            
+            {/* Test if external URL works */}
+            <div className="space-y-3">
+              <p className="text-xs text-muted-foreground">Option 1: Direct Audio Player</p>
+              <audio
+                controls
+                className="w-full"
+                preload="metadata"
+                onError={(e) => console.error('Audio error:', e)}
+                onLoadedMetadata={(e) => {
+                  const target = e.target as HTMLAudioElement;
+                  console.log('Audio loaded! Duration:', target.duration);
+                  setDuration(target.duration);
+                }}
+              >
+                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
+                <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+              
+              <p className="text-xs text-muted-foreground">Option 2: Direct Download Link</p>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open('https://teams1.uspba.pro/assets/audio/uspbawelcome.wav', '_blank')}
+                >
+                  🎧 Listen to WAV
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open('https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3', '_blank')}
+                >
+                  🎧 Listen to MP3
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Featured Episode Player */}
