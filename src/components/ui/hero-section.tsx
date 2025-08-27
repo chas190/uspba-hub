@@ -2,43 +2,26 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
 const HeroSection = () => {
   const playAudio = () => {
-    console.log('Attempting to play audio...');
+    // Try to play using the audio element in the DOM first
+    const audioElement = document.getElementById('uspba-audio') as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.play().catch(error => {
+        console.error('Error playing audio from element:', error);
+      });
+      return;
+    }
     
-    // Try multiple possible paths
-    const possiblePaths = [
-      '/audio/uspbawelcome.mp3',
-      '/public/audio/uspbawelcome.mp3',
-      './audio/uspbawelcome.mp3'
-    ];
-    
-    const audio = new Audio();
-    
-    const tryNextPath = (index = 0) => {
-      if (index >= possiblePaths.length) {
-        console.error('All audio paths failed');
-        return;
-      }
-      
-      const path = possiblePaths[index];
-      console.log(`Trying path: ${path}`);
-      
-      audio.src = path;
-      audio.load();
-      
-      audio.addEventListener('loadeddata', () => {
-        console.log(`Successfully loaded: ${path}`);
-        audio.play().catch(e => console.error('Play failed:', e));
-      }, { once: true });
-      
-      audio.addEventListener('error', () => {
-        console.log(`Failed to load: ${path}`);
-        tryNextPath(index + 1);
-      }, { once: true });
-    };
-    
-    tryNextPath();
+    // Fallback to creating new Audio object
+    const audio = new Audio('/uspbawelcome.mp3');
+    audio.play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
+      {/* Hidden audio element */}
+      <audio id="uspba-audio" preload="auto">
+        <source src="/uspbawelcome.mp3" type="audio/mpeg" />
+      </audio>
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style={{
       backgroundImage: `url(${heroImage})`
