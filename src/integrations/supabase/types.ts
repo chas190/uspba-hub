@@ -586,6 +586,51 @@ export type Database = {
           },
         ]
       }
+      team_signups: {
+        Row: {
+          county_name: string
+          created_at: string
+          email: string
+          has_team_name: boolean
+          id: string
+          name: string
+          phone: string | null
+          region_name: string
+          state_name: string
+          team_name: string | null
+          updated_at: string
+          user_role: string
+        }
+        Insert: {
+          county_name: string
+          created_at?: string
+          email: string
+          has_team_name?: boolean
+          id?: string
+          name: string
+          phone?: string | null
+          region_name: string
+          state_name: string
+          team_name?: string | null
+          updated_at?: string
+          user_role: string
+        }
+        Update: {
+          county_name?: string
+          created_at?: string
+          email?: string
+          has_team_name?: boolean
+          id?: string
+          name?: string
+          phone?: string | null
+          region_name?: string
+          state_name?: string
+          team_name?: string | null
+          updated_at?: string
+          user_role?: string
+        }
+        Relationships: []
+      }
       teams: {
         Row: {
           county_id: string
