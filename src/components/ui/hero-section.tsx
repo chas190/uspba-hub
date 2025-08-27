@@ -2,10 +2,20 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-basketball-court.jpg";
 const HeroSection = () => {
   const playAudio = () => {
+    console.log('Attempting to play audio...');
     const audio = new Audio('/audio/uspbawelcome.mp3');
-    audio.play().catch(error => {
-      console.error('Error playing audio:', error);
-    });
+    
+    audio.addEventListener('loadstart', () => console.log('Audio loading started'));
+    audio.addEventListener('canplay', () => console.log('Audio can play'));
+    audio.addEventListener('error', (e) => console.error('Audio error event:', e));
+    
+    audio.play()
+      .then(() => console.log('Audio playing successfully'))
+      .catch(error => {
+        console.error('Error playing audio:', error);
+        // Fallback: try to prompt user to interact first
+        console.log('Trying to load audio for user interaction...');
+      });
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Background Image */}
