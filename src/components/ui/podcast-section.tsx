@@ -120,7 +120,7 @@ const PodcastSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-black mb-6 text-gradient">
-            USPBA PODCASTS
+            USPBA PODCASTS, VIDEOS & More
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
             Listen to exclusive insights, player interviews, and championship coverage
