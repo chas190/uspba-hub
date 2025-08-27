@@ -5,27 +5,73 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { TrendingUp, DollarSign, Users, Building, Calendar } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import playersImage from "@/assets/players-silhouette.jpg";
 
 const RevenueSection = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    phone: ""
+    phone: "",
+    companyName: "",
+    message: ""
   });
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Demo request submitted:", formData);
-    // Here you would typically send the data to your backend
-    setIsDialogOpen(false);
-    setFormData({ name: "", email: "", phone: "" });
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('demo_bookings')
+        .insert({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          company_name: formData.companyName,
+          message: formData.message
+        });
+
+      if (error) throw error;
+
+      // Show success toast
+      toast({
+        title: "Your info has been received!",
+        description: "Your local region rep will contact you shortly to provide more information.",
+        duration: 5000,
+      });
+
+      // Reset form and close dialog
+      setIsDialogOpen(false);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        companyName: "",
+        message: ""
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an error submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const stats = [
@@ -113,15 +159,27 @@ const RevenueSection = () => {
                         <DialogTitle className="text-primary">Book a Demo</DialogTitle>
                       </DialogHeader>
                       <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">Full Name</Label>
-                          <Input
-                            id="name"
-                            placeholder="Enter your full name"
-                            value={formData.name}
-                            onChange={(e) => handleInputChange("name", e.target.value)}
-                            required
-                          />
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="firstName">First Name</Label>
+                            <Input
+                              id="firstName"
+                              placeholder="Enter your first name"
+                              value={formData.firstName}
+                              onChange={(e) => handleInputChange("firstName", e.target.value)}
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="lastName">Last Name</Label>
+                            <Input
+                              id="lastName"
+                              placeholder="Enter your last name"
+                              value={formData.lastName}
+                              onChange={(e) => handleInputChange("lastName", e.target.value)}
+                              required
+                            />
+                          </div>
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="email">Email</Label>
@@ -142,7 +200,25 @@ const RevenueSection = () => {
                             placeholder="Enter your phone number"
                             value={formData.phone}
                             onChange={(e) => handleInputChange("phone", e.target.value)}
-                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="companyName">Company Name (Optional)</Label>
+                          <Input
+                            id="companyName"
+                            placeholder="Enter your company name"
+                            value={formData.companyName}
+                            onChange={(e) => handleInputChange("companyName", e.target.value)}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="message">Message (Optional)</Label>
+                          <Textarea
+                            id="message"
+                            placeholder="Tell us about your interest in the USPBA..."
+                            value={formData.message}
+                            onChange={(e) => handleInputChange("message", e.target.value)}
+                            rows={3}
                           />
                         </div>
                         <div className="flex gap-2 pt-4">
@@ -151,11 +227,12 @@ const RevenueSection = () => {
                             variant="outline" 
                             onClick={() => setIsDialogOpen(false)}
                             className="flex-1"
+                            disabled={isSubmitting}
                           >
                             Cancel
                           </Button>
-                          <Button type="submit" className="flex-1">
-                            Submit Request
+                          <Button type="submit" className="flex-1" disabled={isSubmitting}>
+                            {isSubmitting ? "Submitting..." : "Submit Request"}
                           </Button>
                         </div>
                       </form>

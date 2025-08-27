@@ -147,6 +147,42 @@ export type Database = {
           },
         ]
       }
+      demo_bookings: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          message: string | null
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          message?: string | null
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          message?: string | null
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       divisions: {
         Row: {
           created_at: string
