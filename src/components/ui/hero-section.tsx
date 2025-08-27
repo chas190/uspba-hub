@@ -6,26 +6,31 @@ const HeroSection = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playAudio = async () => {
     try {
-      console.log('Checking audio element...', audioRef.current);
-      
       if (audioRef.current) {
+        // Don't call load() as it interrupts playback
         console.log('Audio source:', audioRef.current.src);
-        console.log('Audio readyState:', audioRef.current.readyState);
-        console.log('Audio networkState:', audioRef.current.networkState);
+        console.log('Audio current source:', audioRef.current.currentSrc);
         
-        // Try to load first
-        audioRef.current.load();
-        console.log('Audio loaded, attempting to play...');
-        
-        await audioRef.current.play();
-        console.log('Audio played successfully!');
+        // Ensure the audio is ready to play
+        if (audioRef.current.readyState >= 2) {
+          await audioRef.current.play();
+          console.log('Audio played successfully!');
+        } else {
+          // Wait for the audio to be ready
+          audioRef.current.addEventListener('canplay', async () => {
+            try {
+              await audioRef.current!.play();
+              console.log('Audio played successfully after loading!');
+            } catch (error) {
+              console.error('Error playing audio after loading:', error);
+            }
+          }, { once: true });
+        }
       } else {
         console.error('Audio ref is null');
       }
     } catch (error) {
       console.error('Error playing audio:', error);
-      console.error('Error name:', error.name);
-      console.error('Error message:', error.message);
     }
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
