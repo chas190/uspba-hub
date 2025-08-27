@@ -71,7 +71,7 @@ const HeroSection = () => {
 
         {/* USPBA Card */}
         <div className="w-full mx-auto mb-8">
-          <div className="relative bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center overflow-hidden h-96 md:h-[500px] flex items-end justify-center pb-16">
+          <div className="relative bg-card/80 backdrop-blur-sm p-8 rounded-lg border border-border glow-effect text-center overflow-hidden h-72 md:h-[500px] flex items-end justify-center pb-16">
             {/* Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
