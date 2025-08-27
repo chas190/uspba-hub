@@ -100,7 +100,7 @@ const HeroSection = () => {
 
         {/* 4 US Regions Title */}
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8 text-center">
-          4 US Regions
+          4 US Regions | 256 Pro Teams
         </h2>
 
         {/* Regional Map */}
