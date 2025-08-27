@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Play, Pause, Volume2, Download } from "lucide-react";
@@ -6,7 +6,8 @@ import { Play, Pause, Volume2, Download } from "lucide-react";
 const PodcastSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const totalTime = 180; // 3 minutes for demo
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const episodes = [
     {
@@ -59,8 +60,59 @@ const PodcastSection = () => {
     }
   ];
 
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
+    const handleEnded = () => setIsPlaying(false);
+
+    audio.addEventListener('timeupdate', updateTime);
+    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateTime);
+      audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
+  const togglePlayPause = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    try {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        await audio.play();
+      }
+      setIsPlaying(!isPlaying);
+    } catch (error) {
+      console.error('Audio playback error:', error);
+      alert('Audio playback failed. Please try again.');
+    }
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    if (!audio || !duration) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const percentage = (e.clientX - rect.left) / rect.width;
+    const newTime = percentage * duration;
+    
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -75,28 +127,42 @@ const PodcastSection = () => {
           </p>
         </div>
 
+        {/* Hidden Audio Element */}
+        <audio
+          ref={audioRef}
+          preload="auto"
+          onError={(e) => console.error('Audio loading error:', e)}
+        >
+          <source src="/audio/uspbawelcome.wav" type="audio/wav" />
+          <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.wav" type="audio/wav" />
+          <source src="https://teams1.uspba.pro/assets/audio/uspbawelcome.mp3" type="audio/mpeg" />
+        </audio>
+
         {/* Featured Episode Player */}
         <Card className="bg-card/80 backdrop-blur-sm border-border/50 glow-effect mb-12 max-w-4xl mx-auto">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-primary">Now Playing</CardTitle>
-            <h3 className="text-xl font-semibold text-foreground">USPBA Elite Championship Preview</h3>
-            <p className="text-muted-foreground">Breaking down the top contenders for this season's championship</p>
+            <h3 className="text-xl font-semibold text-foreground">USPBA Welcome Audio Overview</h3>
+            <p className="text-muted-foreground">Introduction to the United States Pro Basketball Association</p>
           </CardHeader>
           <CardContent>
             {/* Audio Player */}
             <div className="space-y-4">
               {/* Progress Bar */}
-              <div className="w-full bg-muted rounded-full h-2">
+              <div 
+                className="w-full bg-muted rounded-full h-2 cursor-pointer"
+                onClick={handleSeek}
+              >
                 <div 
                   className="bg-primary h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${(currentTime / totalTime) * 100}%` }}
+                  style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
                 />
               </div>
               
               {/* Time Display */}
               <div className="flex justify-between text-sm text-muted-foreground">
-                <span>{Math.floor(currentTime / 60)}:{(currentTime % 60).toString().padStart(2, '0')}</span>
-                <span>{Math.floor(totalTime / 60)}:{(totalTime % 60).toString().padStart(2, '0')}</span>
+                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(duration)}</span>
               </div>
 
               {/* Controls */}
