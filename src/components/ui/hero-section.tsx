@@ -76,7 +76,7 @@ const HeroSection = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
               style={{
-                backgroundImage: `url(/lovable-uploads/075e41b9-ddb5-4eaf-a2c8-cbec52bb8dd4.png)`
+                backgroundImage: `url(/lovable-uploads/079b6635-d879-4b25-9c9f-e383a805cfb7.png)`
               }}
             />
             {/* Dark overlay for text readability */}
