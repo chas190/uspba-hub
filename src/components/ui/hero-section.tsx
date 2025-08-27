@@ -6,29 +6,32 @@ const HeroSection = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playAudio = async () => {
     try {
+      console.log('Checking audio element...', audioRef.current);
+      
       if (audioRef.current) {
-        console.log('Playing audio via ref...');
+        console.log('Audio source:', audioRef.current.src);
+        console.log('Audio readyState:', audioRef.current.readyState);
+        console.log('Audio networkState:', audioRef.current.networkState);
+        
+        // Try to load first
+        audioRef.current.load();
+        console.log('Audio loaded, attempting to play...');
+        
         await audioRef.current.play();
-        console.log('Audio played successfully via ref');
+        console.log('Audio played successfully!');
       } else {
-        console.log('Audio ref not available, trying direct element access...');
-        const audioElement = document.getElementById('uspba-audio') as HTMLAudioElement;
-        if (audioElement) {
-          await audioElement.play();
-          console.log('Audio played successfully via element');
-        } else {
-          throw new Error('No audio element found');
-        }
+        console.error('Audio ref is null');
       }
     } catch (error) {
       console.error('Error playing audio:', error);
-      alert('Audio playback failed. Please check your browser settings or try again.');
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
     }
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden court-pattern">
       {/* Audio element with ref */}
       <audio ref={audioRef} id="uspba-audio" preload="auto">
-        <source src="/uspbawelcome.mp3" type="audio/mpeg" />
+        <source src="/audio/uspbawelcome.mp3" type="audio/mpeg" />
       </audio>
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style={{
